@@ -60,7 +60,7 @@ namespace PT_Lab3
                     arrayOps.DeserializeArray(openDialog.FileName);
                     ShowArray(arrayOps.Arr, true);
                 }
-            }catch (Exception ex)
+            }catch (Exception ex) 
             {
                 MessageBox.Show(ex.Message);
             }
