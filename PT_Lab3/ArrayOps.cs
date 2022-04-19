@@ -11,6 +11,7 @@ namespace PT_Lab3
     internal class ArrayOps
     {
         int[] arr;
+        List<Operation> operationsLogger = new List<Operation>();
 
         public void GenerateArray(int n,int a,int b)
         {
@@ -21,7 +22,12 @@ namespace PT_Lab3
             {
                 arr[i] = random.Next(a, b);
             }
-            
+            Operation arrOperation = new Operation();
+            arrOperation.array = arr;
+            arrOperation.actions = "Unprocessed array: ";
+            foreach (int i in arrOperation.array)
+                arrOperation.actions += i.ToString("# ");
+            operationsLogger.Add(arrOperation);
         }
 
         public void SerializeArray(string fileName)
@@ -42,39 +48,50 @@ namespace PT_Lab3
                 int[]? m = serializer.Deserialize(fs) as int[];
                 if (m != null)
                     arr = m;
+                else throw new NullReferenceException("File deserialisation error");
             }
         }
 
-        public void SerializeOperations(string fileName, string operation)
+        public void SerializeOperations(string fileName)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(string));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Operation>));
             using (FileStream fs = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write))
             {
-                serializer.Serialize(fs, operation);
+                serializer.Serialize(fs, operationsLogger);
             }
 
         }
 
-        public string DeserializeOperations(string fileName)
+        public void DeserializeOperations(string fileName)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(string));
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Operation>));
             using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             {
-
-                string? m = serializer.Deserialize(fs) as string;
-                if(m!= null)
-                    return m;
+                operationsLogger = serializer.Deserialize(fs) as List<Operation>;
+                if (operationsLogger != null)
+                {
+                    arr = operationsLogger.Last<Operation>().array;
+                    
+                }
+                else throw new NullReferenceException("File deserialisation error");
             }
-            throw new NullReferenceException("File deserialisation error");
+            
         }
 
         public void SortArray()
         {
             Array.Sort(arr);
+            Operation arrOperation = new Operation();
+            arrOperation.array = arr;
+            arrOperation.actions = "Sorted array: ";
+            foreach (int i in arrOperation.array)
+                arrOperation.actions += i.ToString("# ");
+            operationsLogger.Add(arrOperation);
         }
 
-        public int GetSum(int C)
+        public void GetSum(int C)
         {
+            Operation arrOperation = new Operation();
             int sum = 0;
             for(int i = 0; i < arr.Length; i++)
             {
@@ -83,11 +100,14 @@ namespace PT_Lab3
                     sum+=arr[i];
                 }
             }
-            return sum;
+            arrOperation.array = arr;
+            arrOperation.actions = string.Format("The sum is {0}", sum);
+            operationsLogger.Add(arrOperation);
         }
 
-        public int[] Task16()
+        public void Task16()
         {
+            Operation arrOperation = new Operation();
             int sum = 0, n = 0;
             string tmp;
             foreach(int i in arr)
@@ -101,10 +121,12 @@ namespace PT_Lab3
                     }
                 }
             }
-            return new int[] { sum, n };
+            arrOperation.array = arr;
+            arrOperation.actions = string.Format("Array has {0} numbers, that match the requirements; the sum is: {1}", n, sum);
+            operationsLogger.Add(arrOperation);
         }
 
-        public int GetAmountOfSimple()
+        public void GetAmountOfSimple()
         {
             int n = 0;
             foreach(int i in arr)
@@ -118,9 +140,21 @@ namespace PT_Lab3
                     }
                 }
             }
-            return n;
+            Operation arrOperation = new Operation();
+            arrOperation.array = arr;
+            arrOperation.actions = string.Format("Array has {0} simple numbers", n);
+            operationsLogger.Add(arrOperation);
         }
 
+        public string LastOperation { get { return operationsLogger.Last().actions; } }
         public int[] Arr { get { return arr; } }
+        public List<Operation> LoggedOperations { get { return operationsLogger; } }
+    }
+
+    [Serializable]
+    public class Operation
+    {
+        public int[] array = new int[0];
+        public string actions = ""; 
     }
 }

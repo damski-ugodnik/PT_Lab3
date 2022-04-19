@@ -40,16 +40,20 @@
             this.serializeResultsButton = new System.Windows.Forms.Button();
             this.generateArrayButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.processButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.simpleNumsMode = new System.Windows.Forms.RadioButton();
+            this.task16Mode = new System.Windows.Forms.RadioButton();
+            this.arraySortMode = new System.Windows.Forms.RadioButton();
+            this.calculateSumMode = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.deserializeArrayButton = new System.Windows.Forms.Button();
             this.openResultsButton = new System.Windows.Forms.Button();
             this.arrayBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.arrayGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrSizeSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxValueSelect)).BeginInit();
@@ -73,6 +77,7 @@
             // 
             // serializeArrayButton
             // 
+            this.serializeArrayButton.Enabled = false;
             this.serializeArrayButton.Location = new System.Drawing.Point(6, 22);
             this.serializeArrayButton.Name = "serializeArrayButton";
             this.serializeArrayButton.Size = new System.Drawing.Size(133, 23);
@@ -107,7 +112,7 @@
             // 
             // arrSizeSelect
             // 
-            this.arrSizeSelect.Location = new System.Drawing.Point(39, 24);
+            this.arrSizeSelect.Location = new System.Drawing.Point(58, 27);
             this.arrSizeSelect.Minimum = new decimal(new int[] {
             1,
             0,
@@ -124,7 +129,7 @@
             // 
             // maxValueSelect
             // 
-            this.maxValueSelect.Location = new System.Drawing.Point(316, 24);
+            this.maxValueSelect.Location = new System.Drawing.Point(398, 25);
             this.maxValueSelect.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -141,7 +146,7 @@
             // 
             // minValueSelect
             // 
-            this.minValueSelect.Location = new System.Drawing.Point(180, 24);
+            this.minValueSelect.Location = new System.Drawing.Point(228, 25);
             this.minValueSelect.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -153,6 +158,7 @@
             // 
             // serializeResultsButton
             // 
+            this.serializeResultsButton.Enabled = false;
             this.serializeResultsButton.Location = new System.Drawing.Point(6, 51);
             this.serializeResultsButton.Name = "serializeResultsButton";
             this.serializeResultsButton.Size = new System.Drawing.Size(133, 23);
@@ -163,7 +169,7 @@
             // 
             // generateArrayButton
             // 
-            this.generateArrayButton.Location = new System.Drawing.Point(6, 42);
+            this.generateArrayButton.Location = new System.Drawing.Point(12, 22);
             this.generateArrayButton.Name = "generateArrayButton";
             this.generateArrayButton.Size = new System.Drawing.Size(139, 23);
             this.generateArrayButton.TabIndex = 6;
@@ -173,22 +179,33 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.processButton);
             this.groupBox1.Controls.Add(this.ClearButton);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.generateArrayButton);
-            this.groupBox1.Location = new System.Drawing.Point(409, 59);
+            this.groupBox1.Location = new System.Drawing.Point(399, 88);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 224);
+            this.groupBox1.Size = new System.Drawing.Size(296, 247);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            // 
+            // processButton
+            // 
+            this.processButton.Enabled = false;
+            this.processButton.Location = new System.Drawing.Point(12, 192);
+            this.processButton.Name = "processButton";
+            this.processButton.Size = new System.Drawing.Size(268, 38);
+            this.processButton.TabIndex = 10;
+            this.processButton.Text = "Process operating";
+            this.processButton.UseVisualStyleBackColor = true;
+            this.processButton.Click += new System.EventHandler(this.processButton_Click);
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(157, 185);
+            this.ClearButton.Location = new System.Drawing.Point(157, 139);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(117, 23);
+            this.ClearButton.Size = new System.Drawing.Size(117, 47);
             this.ClearButton.TabIndex = 9;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
@@ -196,60 +213,59 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.radioButton4);
-            this.groupBox3.Controls.Add(this.radioButton3);
-            this.groupBox3.Controls.Add(this.radioButton2);
-            this.groupBox3.Controls.Add(this.radioButton1);
-            this.groupBox3.Location = new System.Drawing.Point(157, 42);
+            this.groupBox3.Controls.Add(this.simpleNumsMode);
+            this.groupBox3.Controls.Add(this.task16Mode);
+            this.groupBox3.Controls.Add(this.arraySortMode);
+            this.groupBox3.Controls.Add(this.calculateSumMode);
+            this.groupBox3.Location = new System.Drawing.Point(157, 22);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(117, 137);
+            this.groupBox3.Size = new System.Drawing.Size(117, 111);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
             // 
-            // radioButton4
+            // simpleNumsMode
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(6, 101);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(94, 19);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "radioButton4";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.simpleNumsMode.AutoSize = true;
+            this.simpleNumsMode.Location = new System.Drawing.Point(6, 84);
+            this.simpleNumsMode.Name = "simpleNumsMode";
+            this.simpleNumsMode.Size = new System.Drawing.Size(96, 19);
+            this.simpleNumsMode.TabIndex = 3;
+            this.simpleNumsMode.TabStop = true;
+            this.simpleNumsMode.Text = "Simple Nums";
+            this.simpleNumsMode.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // task16Mode
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 76);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(94, 19);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.task16Mode.AutoSize = true;
+            this.task16Mode.Location = new System.Drawing.Point(6, 59);
+            this.task16Mode.Name = "task16Mode";
+            this.task16Mode.Size = new System.Drawing.Size(62, 19);
+            this.task16Mode.TabIndex = 2;
+            this.task16Mode.TabStop = true;
+            this.task16Mode.Text = "Task 16";
+            this.task16Mode.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // arraySortMode
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 51);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(94, 19);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.arraySortMode.AutoSize = true;
+            this.arraySortMode.Location = new System.Drawing.Point(6, 37);
+            this.arraySortMode.Name = "arraySortMode";
+            this.arraySortMode.Size = new System.Drawing.Size(77, 19);
+            this.arraySortMode.TabIndex = 1;
+            this.arraySortMode.TabStop = true;
+            this.arraySortMode.Text = "Sort Array";
+            this.arraySortMode.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // calculateSumMode
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 26);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(94, 19);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.calculateSumMode.AutoSize = true;
+            this.calculateSumMode.Location = new System.Drawing.Point(6, 12);
+            this.calculateSumMode.Name = "calculateSumMode";
+            this.calculateSumMode.Size = new System.Drawing.Size(101, 19);
+            this.calculateSumMode.TabIndex = 0;
+            this.calculateSumMode.TabStop = true;
+            this.calculateSumMode.Text = "Calculate Sum";
+            this.calculateSumMode.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -257,12 +273,11 @@
             this.groupBox2.Controls.Add(this.openResultsButton);
             this.groupBox2.Controls.Add(this.serializeArrayButton);
             this.groupBox2.Controls.Add(this.serializeResultsButton);
-            this.groupBox2.Location = new System.Drawing.Point(6, 79);
+            this.groupBox2.Location = new System.Drawing.Point(6, 51);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(145, 135);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
             // 
             // deserializeArrayButton
             // 
@@ -289,14 +304,44 @@
             this.arrayBox.Location = new System.Drawing.Point(39, 59);
             this.arrayBox.Name = "arrayBox";
             this.arrayBox.ReadOnly = true;
-            this.arrayBox.Size = new System.Drawing.Size(338, 23);
+            this.arrayBox.Size = new System.Drawing.Size(656, 23);
             this.arrayBox.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(30, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "N = ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(196, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 15);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "A =";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(367, 27);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 15);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "B =";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.arrayBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.minValueSelect);
@@ -339,9 +384,13 @@
         private GroupBox groupBox2;
         private Button deserializeArrayButton;
         private Button openResultsButton;
-        private RadioButton radioButton4;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton simpleNumsMode;
+        private RadioButton task16Mode;
+        private RadioButton arraySortMode;
+        private RadioButton calculateSumMode;
+        private Button processButton;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }
