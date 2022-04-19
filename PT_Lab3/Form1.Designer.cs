@@ -230,7 +230,6 @@
             this.simpleNumsMode.Name = "simpleNumsMode";
             this.simpleNumsMode.Size = new System.Drawing.Size(96, 19);
             this.simpleNumsMode.TabIndex = 3;
-            this.simpleNumsMode.TabStop = true;
             this.simpleNumsMode.Text = "Simple Nums";
             this.simpleNumsMode.UseVisualStyleBackColor = true;
             // 
@@ -241,7 +240,6 @@
             this.task16Mode.Name = "task16Mode";
             this.task16Mode.Size = new System.Drawing.Size(62, 19);
             this.task16Mode.TabIndex = 2;
-            this.task16Mode.TabStop = true;
             this.task16Mode.Text = "Task 16";
             this.task16Mode.UseVisualStyleBackColor = true;
             // 
@@ -252,13 +250,13 @@
             this.arraySortMode.Name = "arraySortMode";
             this.arraySortMode.Size = new System.Drawing.Size(77, 19);
             this.arraySortMode.TabIndex = 1;
-            this.arraySortMode.TabStop = true;
             this.arraySortMode.Text = "Sort Array";
             this.arraySortMode.UseVisualStyleBackColor = true;
             // 
             // calculateSumMode
             // 
             this.calculateSumMode.AutoSize = true;
+            this.calculateSumMode.Checked = true;
             this.calculateSumMode.Location = new System.Drawing.Point(6, 12);
             this.calculateSumMode.Name = "calculateSumMode";
             this.calculateSumMode.Size = new System.Drawing.Size(101, 19);
