@@ -43,6 +43,7 @@
             this.processButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cLabel = new System.Windows.Forms.Label();
             this.simpleNumsMode = new System.Windows.Forms.RadioButton();
             this.task16Mode = new System.Windows.Forms.RadioButton();
             this.arraySortMode = new System.Windows.Forms.RadioButton();
@@ -54,6 +55,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.cBox = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.arrayGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrSizeSelect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxValueSelect)).BeginInit();
@@ -61,6 +63,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cBox)).BeginInit();
             this.SuspendLayout();
             // 
             // openDialog
@@ -186,7 +189,7 @@
             this.groupBox1.Controls.Add(this.generateArrayButton);
             this.groupBox1.Location = new System.Drawing.Point(399, 88);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(296, 247);
+            this.groupBox1.Size = new System.Drawing.Size(389, 247);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -195,7 +198,7 @@
             this.processButton.Enabled = false;
             this.processButton.Location = new System.Drawing.Point(12, 192);
             this.processButton.Name = "processButton";
-            this.processButton.Size = new System.Drawing.Size(268, 38);
+            this.processButton.Size = new System.Drawing.Size(371, 38);
             this.processButton.TabIndex = 10;
             this.processButton.Text = "Process operating";
             this.processButton.UseVisualStyleBackColor = true;
@@ -205,7 +208,7 @@
             // 
             this.ClearButton.Location = new System.Drawing.Point(157, 139);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(117, 47);
+            this.ClearButton.Size = new System.Drawing.Size(226, 47);
             this.ClearButton.TabIndex = 9;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
@@ -213,20 +216,31 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cBox);
+            this.groupBox3.Controls.Add(this.cLabel);
             this.groupBox3.Controls.Add(this.simpleNumsMode);
             this.groupBox3.Controls.Add(this.task16Mode);
             this.groupBox3.Controls.Add(this.arraySortMode);
             this.groupBox3.Controls.Add(this.calculateSumMode);
-            this.groupBox3.Location = new System.Drawing.Point(157, 22);
+            this.groupBox3.Location = new System.Drawing.Point(157, 13);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(117, 111);
+            this.groupBox3.Size = new System.Drawing.Size(226, 120);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
+            // 
+            // cLabel
+            // 
+            this.cLabel.AutoSize = true;
+            this.cLabel.Location = new System.Drawing.Point(113, 42);
+            this.cLabel.Name = "cLabel";
+            this.cLabel.Size = new System.Drawing.Size(47, 15);
+            this.cLabel.TabIndex = 5;
+            this.cLabel.Text = "Insert C";
             // 
             // simpleNumsMode
             // 
             this.simpleNumsMode.AutoSize = true;
-            this.simpleNumsMode.Location = new System.Drawing.Point(6, 84);
+            this.simpleNumsMode.Location = new System.Drawing.Point(6, 91);
             this.simpleNumsMode.Name = "simpleNumsMode";
             this.simpleNumsMode.Size = new System.Drawing.Size(96, 19);
             this.simpleNumsMode.TabIndex = 3;
@@ -236,7 +250,7 @@
             // task16Mode
             // 
             this.task16Mode.AutoSize = true;
-            this.task16Mode.Location = new System.Drawing.Point(6, 59);
+            this.task16Mode.Location = new System.Drawing.Point(6, 66);
             this.task16Mode.Name = "task16Mode";
             this.task16Mode.Size = new System.Drawing.Size(62, 19);
             this.task16Mode.TabIndex = 2;
@@ -246,7 +260,7 @@
             // arraySortMode
             // 
             this.arraySortMode.AutoSize = true;
-            this.arraySortMode.Location = new System.Drawing.Point(6, 37);
+            this.arraySortMode.Location = new System.Drawing.Point(6, 41);
             this.arraySortMode.Name = "arraySortMode";
             this.arraySortMode.Size = new System.Drawing.Size(77, 19);
             this.arraySortMode.TabIndex = 1;
@@ -257,13 +271,14 @@
             // 
             this.calculateSumMode.AutoSize = true;
             this.calculateSumMode.Checked = true;
-            this.calculateSumMode.Location = new System.Drawing.Point(6, 12);
+            this.calculateSumMode.Location = new System.Drawing.Point(6, 16);
             this.calculateSumMode.Name = "calculateSumMode";
             this.calculateSumMode.Size = new System.Drawing.Size(101, 19);
             this.calculateSumMode.TabIndex = 0;
             this.calculateSumMode.TabStop = true;
             this.calculateSumMode.Text = "Calculate Sum";
             this.calculateSumMode.UseVisualStyleBackColor = true;
+            this.calculateSumMode.CheckedChanged += new System.EventHandler(this.calculateSumMode_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -295,14 +310,14 @@
             this.openResultsButton.TabIndex = 6;
             this.openResultsButton.Text = "Open Results";
             this.openResultsButton.UseVisualStyleBackColor = true;
-            this.openResultsButton.Click += new System.EventHandler(this.openResultsButton_Click);
+            this.openResultsButton.Click += new System.EventHandler(this.deserializeResultsButton_Click);
             // 
             // arrayBox
             // 
             this.arrayBox.Location = new System.Drawing.Point(39, 59);
             this.arrayBox.Name = "arrayBox";
             this.arrayBox.ReadOnly = true;
-            this.arrayBox.Size = new System.Drawing.Size(656, 23);
+            this.arrayBox.Size = new System.Drawing.Size(749, 23);
             this.arrayBox.TabIndex = 8;
             // 
             // label1
@@ -332,6 +347,19 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "B =";
             // 
+            // cBox
+            // 
+            this.cBox.Location = new System.Drawing.Point(113, 16);
+            this.cBox.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.cBox.Name = "cBox";
+            this.cBox.Size = new System.Drawing.Size(107, 23);
+            this.cBox.TabIndex = 6;
+            this.cBox.ThousandsSeparator = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -347,7 +375,7 @@
             this.Controls.Add(this.arrSizeSelect);
             this.Controls.Add(this.arrayGridView);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "PT_Lab3";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.arrayGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.arrSizeSelect)).EndInit();
@@ -357,6 +385,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,5 +419,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private Label cLabel;
+        private NumericUpDown cBox;
     }
 }
